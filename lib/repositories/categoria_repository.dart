@@ -1,16 +1,11 @@
 import 'package:sqflite/sqflite.dart';
+import '../database/db_helper.dart';
 import '../models/categoria.dart';
-// import '../database/database_helper.dart'; // ajuste o caminho do seu DatabaseHelper
 
 class CategoriaRepository {
   static const String tableName = 'categorias';
 
-  // Ajuste conforme o seu DatabaseHelper
-  Future<Database> get _db async {
-    throw UnimplementedError(
-      'Conecte aqui ao seu DatabaseHelper (ex.: return await DatabaseHelper.instance.database;)',
-    );
-  }
+  Future<Database> get _db async => await DbHelper.instance.database;
 
   Future<int> inserir(Categoria categoria) async {
     final db = await _db;
